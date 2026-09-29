@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-GB">
   <head>
     <meta charset="utf-8">
@@ -16,11 +16,33 @@
       <section class="card" aria-labelledby="coming-soon-title">
         <img class="logo" src="foa-logo.jpg" alt="The Friends of Ashley">
         <p class="eyebrow">Ashley C of E Primary School PTA</p>
-        <h1 id="coming-soon-title">A new home for<br><em>our community.</em></h1>
+        <h1 id="coming-soon-title">
+          <span class="title-line">A new home</span>
+          <span class="title-line no-wrap">for <em>our</em></span>
+          <em class="title-line">community.</em>
+        </h1>
         <p class="intro">The Friends of Ashley website is on its way, with events, practical information and simple ways to get involved.</p>
         <div class="rule" aria-hidden="true"><span></span></div>
         <p class="status"><span aria-hidden="true"></span> Coming soon</p>
       </section>
     </main>
+    <script>
+      const main = document.querySelector("main");
+
+      if (matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
+        main.addEventListener("pointermove", ({ clientX, clientY }) => {
+          const x = (clientX / innerWidth - 0.5) * 12;
+          const y = (clientY / innerHeight - 0.5) * 12;
+
+          main.style.setProperty("--pointer-x", `${x.toFixed(2)}px`);
+          main.style.setProperty("--pointer-y", `${y.toFixed(2)}px`);
+        });
+
+        main.addEventListener("pointerleave", () => {
+          main.style.setProperty("--pointer-x", "0px");
+          main.style.setProperty("--pointer-y", "0px");
+        });
+      }
+    </script>
   </body>
 </html>
